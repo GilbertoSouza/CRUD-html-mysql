@@ -16,11 +16,14 @@ if (isset($_POST['submit'])) {
     $connection = new PDO($dsn, $username, $password, $options);
     
     $new_user = array(
-      "firstname" => $_POST['firstname'],
-      "lastname"  => $_POST['lastname'],
-      "email"     => $_POST['email'],
-      "age"       => $_POST['age'],
-      "location"  => $_POST['location']
+      "nome"         => $_POST['nome'],
+      "telefone"     => $_POST['telefone'],
+      "cidade"       => $_POST['cidade'],
+      "estado"       => $_POST['estado'],
+      "email"        => $_POST['email'],
+      "complemento"  => $_POST['complemento'],
+      "tipo"         => $_POST['tipo'],
+      "cpf_cnpj"     => $_POST['cpf_cnpj']
     );
 
     $sql = sprintf(
@@ -43,23 +46,68 @@ if (isset($_POST['submit'])) {
     <blockquote><?php echo escape($_POST['firstname']); ?> successfully added.</blockquote>
   <?php endif; ?>
 
-  <h2>Add a user</h2>
+  <h2>Adicionar usuário</h2>
 
   <form method="post">
     <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">
-    <label for="firstname">First Name</label>
-    <input type="text" name="firstname" id="firstname">
-    <label for="lastname">Last Name</label>
-    <input type="text" name="lastname" id="lastname">
-    <label for="email">Email Address</label>
-    <input type="text" name="email" id="email">
-    <label for="age">Age</label>
-    <input type="text" name="age" id="age">
-    <label for="location">Location</label>
-    <input type="text" name="location" id="location">
-    <input type="submit" name="submit" value="Submit">
-  </form>
 
-  <a href="index.php">Back to home</a>
+    <label for="nome">Nome</label>
+    <input type="text" name="nome" id="nome">
+
+    <label for="telefone">Telefone</label>
+    <input type="text" name="telefone" id="telefone">
+
+    <label for="cidade">Cidade</label>
+    <input type="text" name="cidade" id="cidade">
+
+    <label for="estado">Estado</label>
+    <select name="estado" name="estado" id="estado">
+      <option value="AC">Acre</option>
+      <option value="AL">Alagoas</option>
+      <option value="AP">Amapá</option>
+      <option value="AM">Amazonas</option>
+      <option value="BA">Bahia</option>
+      <option value="CE">Ceará</option>
+      <option value="DF">Distrito Federal</option>
+      <option value="ES">Espírito Santo</option>
+      <option value="GO">Goiás</option>
+      <option value="MA">Maranhão</option>
+      <option value="MT">Mato Grosso</option>
+      <option value="MS">Mato Grosso do Sul</option>
+      <option value="MG">Minas Gerais</option>
+      <option value="PA">Pará</option>
+      <option value="PB">Paraíba</option>
+      <option value="PR">Paraná</option>
+      <option value="PE">Pernambuco</option>
+      <option value="PI">Piauí</option>
+      <option value="RJ">Rio de Janeiro</option>
+      <option value="RN">Rio Grande do Norte</option>
+      <option value="RS">Rio Grande do Sul</option>
+      <option value="RO">Rondônia</option>
+      <option value="RR">Roraima</option>
+      <option value="SC">Santa Catarina</option>
+      <option value="SP">São Paulo</option>
+      <option value="SE">Sergipe</option>
+      <option value="TO">Tocantins</option>
+    </select>
+
+    <label for="email">Email</label>
+    <input type="text" name="email" id="email">
+
+    <label for="complemento">Informações Adicionais</label>
+    <textarea rows="4" cols="25" name="complemento" id="complemento"></textarea><br>
+
+    <label for="tipo">Tipo Cliente</label>
+    <input type="radio" name="tipo" id="tipo" value="pf"> Pessoa Física
+    <input type="radio" name="tipo" id="tipo" value="pj"> Pessoa Jurídica<br><br>
+
+    <label for="cpf_cnpj">CPF / CNPJ</label>
+    <input type="text" name="cpf_cnpj" id="cpf_cnpj">
+
+    <br><br>
+    <input type="submit" name="Salvar" value="Salvar">
+  </form>
+  <br>
+  <a href="index.php">Voltar</a>
 
 <?php require "templates/footer.php"; ?>

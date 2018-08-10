@@ -22,7 +22,7 @@ try {
 ?>
 <?php require "templates/header.php"; ?>
         
-<h2>Update users</h2>
+<h2>Editar usuários</h2>
 
 <table>
     <thead>

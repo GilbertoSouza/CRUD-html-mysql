@@ -68,15 +68,16 @@ if (isset($_POST['submit'])) {
     <?php } 
 } ?> 
 
-<h2>Find user based on location</h2>
+<h2>Buscar usuários</h2>
 
 <form method="post">
   <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">
-  <label for="location">Location</label>
+  <label for="location">Buscar</label>
   <input type="text" id="location" name="location">
-  <input type="submit" name="submit" value="View Results">
+  <input type="submit" name="submit" value="Localizar...">
 </form>
 
-<a href="index.php">Back to home</a>
+<br>
+<a href="index.php">Voltar</a>
 
 <?php require "templates/footer.php"; ?>

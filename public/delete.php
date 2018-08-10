@@ -40,7 +40,7 @@ try {
 ?>
 <?php require "templates/header.php"; ?>
         
-<h2>Delete users</h2>
+<h2>Deletar usuário</h2>
 
 <?php if ($success) echo $success; ?>
 
