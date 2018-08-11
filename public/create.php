@@ -1,10 +1,6 @@
 <?php
 
-/**
- * Use an HTML form to create a new entry in the
- * users table.
- *
- */
+error_reporting(0);
 
 require "../config.php";
 require "../common.php";
@@ -43,7 +39,7 @@ if (isset($_POST['submit'])) {
 <?php require "templates/header.php"; ?>
 
   <?php if (isset($_POST['submit']) && $statement) : ?>
-    <blockquote><?php echo escape($_POST['firstname']); ?> successfully added.</blockquote>
+    <blockquote><?php echo escape($_POST['nome']); ?> Cadastrado com sucesso!</blockquote>
   <?php endif; ?>
 
   <h2>Adicionar usuário</h2>
@@ -52,7 +48,14 @@ if (isset($_POST['submit'])) {
     <input name="csrf" type="hidden" value="<?php echo escape($_SESSION['csrf']); ?>">
 
     <label for="nome">Nome</label>
-    <input type="text" name="nome" id="nome">
+    <input type="text" name="nome" id="nome"><br><br>
+
+    <label for="tipo">Tipo Cliente</label>
+    <input type="radio" name="tipo" id="tipo" value="PF"> Pessoa Física
+    <input type="radio" name="tipo" id="tipo" value="PJ"> Pessoa Jurídica<br><br>
+
+    <label for="cpf_cnpj">CPF / CNPJ</label>
+    <input type="text" name="cpf_cnpj" id="cpf_cnpj" >
 
     <label for="telefone">Telefone</label>
     <input type="text" name="telefone" id="telefone">
@@ -95,17 +98,10 @@ if (isset($_POST['submit'])) {
     <input type="text" name="email" id="email">
 
     <label for="complemento">Informações Adicionais</label>
-    <textarea rows="4" cols="25" name="complemento" id="complemento"></textarea><br>
-
-    <label for="tipo">Tipo Cliente</label>
-    <input type="radio" name="tipo" id="tipo" value="pf"> Pessoa Física
-    <input type="radio" name="tipo" id="tipo" value="pj"> Pessoa Jurídica<br><br>
-
-    <label for="cpf_cnpj">CPF / CNPJ</label>
-    <input type="text" name="cpf_cnpj" id="cpf_cnpj">
+    <textarea rows="4" cols="25" name="complemento" id="complemento"></textarea>
 
     <br><br>
-    <input type="submit" name="Salvar" value="Salvar">
+    <input type="submit" name="submit" value="Salvar">
   </form>
   <br>
   <a href="index.php">Voltar</a>
