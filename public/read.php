@@ -17,7 +17,6 @@ if (isset($_POST['submit'])) {
             WHERE nome like '%$location%'";
     
     $statement = $connection->prepare($sql);
-    //$statement->bindParam(':location', $location, PDO::PARAM_STR);
     $statement->execute();
 
     $result = $statement->fetchAll();
